@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">SIDS</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string name="grant_permissions">GRANT PERMISSIONS</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_text">Tap next to start</string>
+    <string name="permissions">Permissions</string>
+    <string name="permissions_text">To take selfie for intruders we need permissions </string>
+    <string name="sms">Sms</string>
+    <string name="sms_text">When there is an intruder, we will send an sms to the configured phone number</string>
+    <string name="admin">Admin</string>
+    <string name="admin_text">To detect failed unlock attempts we need to be Device Administrator</string>
+    <string name="grant_admin">GRANT DEVICE ADMIN</string>
+    <string name="important">Important</string>
+    <string name="important_text">To unistall the application SIDS you will need to remove Device Administrator access.</string>
+    <string name="device_admin_enabled">Device admin enabled</string>
+    <string name="device_admin_disabled">Device admin disabled</string>
+    <string name="number_pictures">Number of pictures</string>
+    <string name="description_number_pictures">Number of pictures taken for intruder</string>
+    <string name="detection_behavior">Detection behavior</string>
+    <string name="description_detection_behavior">When we should take a picture</string>
+    <string name="number_attempts">Number attempts</string>
+    <string name="description_number_attempts">Some actions will be taken after this number of failed attempts</string>
+    <string name="sms_number">Sms number</string>
+    <string name="description_sms_number">An sms will be sended after the configured number of failed attempts</string>
+    <string name="total_number_failed_attempts">Total number of failed attempts</string>
+    <string name="msg_alert_dialog_admin_device">If you disable Device Administrator for the application, we will not able to detect failed attempts to unlock your phone</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="always">Always</string>
+    <string name="fail_unlock">Fail Unlock</string>
+    <string name="success_unlock">Success Unlock</string>
+
+
+    <string name="shared_preferences_settings">SAHRED_PREFERENCES_SETTINGS</string>
+    <string name="key_number_pictures">keyNumberPictures</string>
+    <string name="key_detection_behavior">keyDetectionBehavior</string>
+    <string name="key_configured_number_attempts">keyNumberAttempts</string>
+    <string name="key_phone_number">keySmsNumber</string>
+    <string name="key_total_failed_attempts">keyFailedAttempts</string>
+    <string name="key_is_sms_enabled">isSmsEnabled</string>
+    <string name="key_last_latitude">lastLatitude</string>
+    <string name="key_last_longitude">lastlongitude</string>
+    <string name="key_last_streetname">laststreetname</string>
+
+    <string name="msg_prompt">Choose a number</string>
+    <string-array name="numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="detectionBehavior">
+        <item>Always</item>
+        <item>Fail Unlock</item>
+        <item>Success Unlock</item>
+    </string-array>
+</resources>
