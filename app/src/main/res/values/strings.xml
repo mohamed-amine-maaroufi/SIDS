@@ -32,17 +32,18 @@
     <string name="fail_unlock">Fail Unlock</string>
     <string name="success_unlock">Success Unlock</string>
 
-
-    <string name="shared_preferences_settings">SAHRED_PREFERENCES_SETTINGS</string>
     <string name="key_number_pictures">keyNumberPictures</string>
-    <string name="key_detection_behavior">keyDetectionBehavior</string>
-    <string name="key_configured_number_attempts">keyNumberAttempts</string>
-    <string name="key_phone_number">keySmsNumber</string>
-    <string name="key_total_failed_attempts">keyFailedAttempts</string>
-    <string name="key_is_sms_enabled">isSmsEnabled</string>
-    <string name="key_last_latitude">lastLatitude</string>
-    <string name="key_last_longitude">lastlongitude</string>
     <string name="key_last_streetname">laststreetname</string>
+
+    <string name="shared_preferences_settings">SAHRED_PREFERENCES_SETTINGS</string>  <!-- name of the local storage when the data is saved  -->
+    <string name="key_detection_behavior">keyDetectionBehavior</string> <!-- name of the key of storage to save Detection Behavior (failed or success attemps) to take selfie of inturder -->
+    <string name="key_configured_number_attempts">keyNumberAttempts</string> <!--name of the key of storage to save Number Attempts , after this number of failed attempts we take selfie -->
+    <string name="key_phone_number">keySmsNumber</string><!--name of the key of storage to save the which number will recieve sms -->
+    <string name="key_total_failed_attempts">keyFailedAttempts</string> <!--name of the key of storage to save total Failed Attempts -->
+    <string name="key_is_sms_enabled">isSmsEnabled</string><!--name of the key of storage to save if sms enabled or disabled -->
+    <string name="key_last_latitude">lastLatitude</string><!--name of the key of storage to save last Latitude of location detected -->
+    <string name="key_last_longitude">lastlongitude</string><!--name of the key of storage to save last longitude of location detected -->
+    <string name="key_account_name">accountName</string><!--name of the key of storage to save the name of account google is signing -->
 
     <string name="msg_prompt">Choose a number</string>
     <string-array name="numbers">

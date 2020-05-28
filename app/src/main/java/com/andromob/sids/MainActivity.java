@@ -3,9 +3,7 @@ package com.andromob.sids;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.andromob.sids.logs.LogsFragment;
 import com.andromob.sids.logs.TabAdapter;
@@ -31,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new SettingFragment(), "SETTINGS");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
-
 
     }
 

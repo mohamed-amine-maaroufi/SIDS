@@ -20,6 +20,7 @@ import com.andromob.sids.DeviceAdminSampleReceiver;
 import com.andromob.sids.MainActivity;
 import com.andromob.sids.R;
 import com.andromob.sids.Tools;
+import com.andromob.sids.settings.SignInActivity;
 
 import java.util.List;
 
@@ -115,7 +116,7 @@ public class AdminPermissionActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {
-                Intent intent = new Intent(AdminPermissionActivity.this, MainActivity.class);
+                Intent intent = new Intent(AdminPermissionActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });

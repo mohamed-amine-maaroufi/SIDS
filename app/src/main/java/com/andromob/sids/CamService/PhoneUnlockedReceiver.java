@@ -1,14 +1,12 @@
 package com.andromob.sids.CamService;
-
+/*
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Created by IT02106 on 16/05/2018.
- */
+
 
 public class PhoneUnlockedReceiver extends BroadcastReceiver {
 
@@ -29,9 +27,8 @@ public class PhoneUnlockedReceiver extends BroadcastReceiver {
            /* CameraManager mgr = new CameraManager(context);
             mgr.takePhoto();
             Toast.makeText(context,"Photo saved to Pictures\\iSelfie", Toast.LENGTH_SHORT).show();*/
-
+/*
         }
-
-
     }
 }
+*/

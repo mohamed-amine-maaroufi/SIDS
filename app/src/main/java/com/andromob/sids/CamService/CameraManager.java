@@ -2,6 +2,7 @@ package com.andromob.sids.CamService;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
@@ -12,8 +13,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.andromob.sids.R;
 import com.andromob.sids.Tools;
+import com.andromob.sids.settings.DriveService;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -296,18 +297,23 @@ public class CameraManager implements  Camera.PictureCallback, Camera.ErrorCallb
             String photoFileName = Tools.app_name + date + ".jpg";
 
             Tools.filepath = pictureFileDir.getPath() + File.separator + photoFileName;
+            Tools.fileName = photoFileName;
             Log.d("asdaxxx",Tools.filepath);
 
 
-                File pictureFile = new File(Tools.filepath);
-                FileOutputStream fos = new FileOutputStream(pictureFile);
-                fos.write(bytes);
-                fos.close();
+            File pictureFile = new File(Tools.filepath);
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            fos.write(bytes);
+            fos.close();
+
+            Tools.compressImage(Tools.filepath,mContext);
 
 
 
             Log.d("asdaxxx","New image was saved" + photoFileName);
 
+
+            Tools.waitThenUploadToDive(mContext);
 
 
         } catch (Exception e)

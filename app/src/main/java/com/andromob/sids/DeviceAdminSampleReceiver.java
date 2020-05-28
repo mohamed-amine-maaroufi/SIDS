@@ -10,28 +10,16 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.andromob.sids.settings.AppLocationService;
-import com.andromob.sids.settings.LocationAddress;
-
-import java.sql.Time;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import static android.content.Context.MODE_PRIVATE;
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 /**
  * Created by andromob on 26/04/14.
  */
-public class DeviceAdminSampleReceiver extends DeviceAdminReceiver implements LocationListener {
+public class DeviceAdminSampleReceiver extends DeviceAdminReceiver {
     private final String TAG = "DeviceAdminSampleReceiver";
 
     protected Location locationManager;
@@ -69,9 +57,6 @@ public class DeviceAdminSampleReceiver extends DeviceAdminReceiver implements Lo
         super.onPasswordFailed(context, intent);
 
         Log.d(TAG, "onPasswordFailed");
-
-        //GetLastLocation
-        Tools.getlastLocation(context);
 
         int attempts =0;
         DevicePolicyManager DevicePolicyManager=
@@ -117,17 +102,11 @@ public class DeviceAdminSampleReceiver extends DeviceAdminReceiver implements Lo
                     if(isSmsEnabled)
                     {
 
-
-                       /* Tools.waitLocationThenSendSms(context,PhoneNumber);
-
-                        Tools.waitDetectLocation = false;*/
-
                         AppLocationService appLocationService = new AppLocationService(context);
                         Location gpsLocation = appLocationService
                                 .getLocation(LocationManager.GPS_PROVIDER);
                         if (gpsLocation != null) {
-                            double latitude = gpsLocation.getLatitude();
-                            double longitude = gpsLocation.getLongitude();
+
                             String result = "Latitude: " + gpsLocation.getLatitude() +
                                     " Longitude: " + gpsLocation.getLongitude();
                             Log.d(TAG, "resulat location = " + result);
@@ -143,6 +122,7 @@ public class DeviceAdminSampleReceiver extends DeviceAdminReceiver implements Lo
 
                             Tools.SendMessage(context,PhoneNumber,message);
                             Log.d(TAG, message);
+
 
                         }
 
@@ -169,8 +149,6 @@ public class DeviceAdminSampleReceiver extends DeviceAdminReceiver implements Lo
         super.onPasswordSucceeded(context, intent);
         Log.d(TAG, "onPasswordSucceeded");
 
-        //GetLastLocation
-        Tools.getlastLocation(context);
 
         //Capture intruder with selfie camera
         SharedPreferences sharedPreferences = context.getSharedPreferences(String.valueOf(R.string.shared_preferences_settings), MODE_PRIVATE);
@@ -180,69 +158,49 @@ public class DeviceAdminSampleReceiver extends DeviceAdminReceiver implements Lo
         boolean isSmsEnabled = sharedPreferences.getBoolean(String.valueOf(R.string.key_is_sms_enabled), true);
 
 
-
-
-        String PhoneModelName = android.os.Build.MODEL;
         Log.d(TAG, "BehaviorCam = " + BehaviorCam);
         //Log.d(TAG, "NumberPicToTake = " + NumberPicToTake);
 
 
+        if (BehaviorCam.equals("Success Unlock") || BehaviorCam.equals("Always")) {
+            if (Tools.isPermissionGranted(context)) {
+                Tools.TakeSelfie(context, 1);
+                if (isSmsEnabled) {
+                    AppLocationService appLocationService = new AppLocationService(context);
+                    Location gpsLocation = appLocationService
+                            .getLocation(LocationManager.GPS_PROVIDER);
+                    if (gpsLocation != null) {
+                        double latitude = gpsLocation.getLatitude();
+                        double longitude = gpsLocation.getLongitude();
+                        String result = "Latitude: " + gpsLocation.getLatitude() +
+                                " Longitude: " + gpsLocation.getLongitude();
+                        Log.d(TAG, "resulat location = " + result);
 
 
+                        final String PhoneModelName = android.os.Build.MODEL;
+                        final String message = Tools.smsMessage + " " + PhoneModelName + " !!!"
+                                + "\n the last detected location : "
+                                + "\n   - " + result;
+                        // + "\n http://maps.google.com/maps?q="  + latitude + "," + longitude + "&iwloc=A";
 
-        if(BehaviorCam.equals("Success Unlock") || BehaviorCam.equals("Always"))
-        {
-            if(Tools.isPermissionGranted(context))
-            {
-                Tools.TakeSelfie(context,1);
-                if(isSmsEnabled)
-                {
-                    String Latitude = "Latitude = " + Tools.lastlatitude;
-                    String Longitude = "Longitude = " + Tools.lastlongitude;
 
-                    Log.d(TAG, "lastLatitude = " + Latitude);
-                    Log.d(TAG, "lastLongitude = " + Longitude);
+                        Tools.SendMessage(context, PhoneNumber, message);
+                        Log.d(TAG, message);
 
-                    final String message = Tools.smsMessage + " " + PhoneModelName + " !!!"
-                            + "\n the last detected location : "
-                            + "\n   - " + Latitude
-                            + "\n   - " + Longitude;
 
-                    Log.d(TAG, message);
-                    Toast.makeText(context, "send message !!!", Toast.LENGTH_LONG).show();
-                    Tools.SendMessage(context,PhoneNumber,message);
+                    }
+
+                } else {
+                    Log.d(TAG, "Permission not granted !!!");
                 }
 
-            }else
-            {
-                Log.d(TAG, "Permission not granted !!!");
+            } else {
+                Log.d(TAG, "behavior not correct for onPasswordSucceeded ");
             }
-
-        }
-        else{
-            Log.d(TAG, "behavior not correct for onPasswordSucceeded ");
         }
     }
 
-    @Override
-    public void onLocationChanged(Location location) {
 
-    }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }
 
 }
 

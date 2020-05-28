@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 public class CameraService extends Service {
 
-    PhoneUnlockedReceiver receiver;
+    //PhoneUnlockedReceiver receiver;
 
     @Nullable
     @Override
@@ -31,12 +31,14 @@ public class CameraService extends Service {
     @Override
     public void onCreate() {
         Log.d("CameraService", "Invoke service");
-        receiver = new PhoneUnlockedReceiver();
+        /*receiver = new PhoneUnlockedReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_USER_PRESENT);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_BOOT_COMPLETED);
-        registerReceiver(receiver, filter);
+        registerReceiver(receiver, filter);*/
+        CameraManager mgr = new CameraManager(this);
+        mgr.takePhoto();
     }
 }

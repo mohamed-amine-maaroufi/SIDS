@@ -6,24 +6,25 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
-
-
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_MMS"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_MMS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.provider.Telephony.SMS_RECEIVED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -36,7 +37,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".settings.DriveService" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".settings.SignInActivity" />
         <activity android:name=".IntroScreens.AdminPermissionActivity" />
         <activity android:name=".IntroScreens.PermissionActivity" />
         <activity android:name=".IntroScreens.WelcomeActivity">
@@ -46,6 +49,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- This is where we register our receiver -->
+
+
+        <service
+            android:name=".CamService.CameraService"
+            android:label="MyService"/>
+        <service
+            android:name=".settings.DriveService"
+            android:enabled="true" />
+
         <receiver
             android:name=".DeviceAdminSampleReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -63,15 +75,8 @@
                 android:resource="@xml/device_admin_sample" />
         </receiver>
 
-        <service android:name=".CamService.CameraService"
-
-            android:label="MyService">
-        </service>
-        <service android:name=".LocationService"
-            android:label="LocationService">
-        </service>
-
-        <receiver android:name=".CamService.PhoneUnlockedReceiver"
+        <!--<receiver
+            android:name=".CamService.PhoneUnlockedReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -79,9 +84,8 @@
                 <action android:name="android.intent.action.SCREEN_OFF" />
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
-        <service android:name="com.android.mms.transaction.TransactionService"/>
 
     </application>
 
