@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.andromob.sids">
+    package="com.android.sids">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -37,12 +37,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".settings.DriveService" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".settings.SignInActivity" />
-        <activity android:name=".IntroScreens.AdminPermissionActivity" />
-        <activity android:name=".IntroScreens.PermissionActivity" />
-        <activity android:name=".IntroScreens.WelcomeActivity">
+        <activity android:name="com.android.sids.settings.DriveService" />
+        <activity android:name="com.android.sids.MainActivity" />
+        <activity android:name="com.android.sids.settings.SignInActivity" />
+        <activity android:name="com.android.sids.IntroScreens.AdminPermissionActivity" />
+        <activity android:name="com.android.sids.IntroScreens.PermissionActivity" />
+        <activity android:name="com.android.sids.IntroScreens.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,14 +52,14 @@
 
 
         <service
-            android:name=".CamService.CameraService"
+            android:name="com.android.sids.CamService.CameraService"
             android:label="MyService"/>
         <service
-            android:name=".settings.DriveService"
+            android:name="com.android.sids.settings.DriveService"
             android:enabled="true" />
 
         <receiver
-            android:name=".DeviceAdminSampleReceiver"
+            android:name="com.android.sids.DeviceAdminSampleReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <intent-filter>
 
